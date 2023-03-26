@@ -2,7 +2,7 @@ import os
 import openai
 import requests 
 import json
-import extension
+import gpt2ppt.extension as extension
 from argparse import ArgumentParser as ap
 from pptx import Presentation as pt
 
@@ -52,7 +52,7 @@ def generate(args):
                 print(f"generating slide page: {page_index}")
                 question, topic = line.split(',')
                 # prompt += input(":")+'\n'
-                prompt += question + '\n'
+                prompt += question + 'in 50 words\n'
                 payload = {
                     "model": "gpt-3.5-turbo",
                     "messages": [{"role": "user", "content": prompt}]
@@ -73,7 +73,7 @@ def generate(args):
                     return 1
                 
                 page_index = page_index + 1
-                
+
         prs.save(output)       
     except FileNotFoundError as fe:
         print("error:", str(fe))
@@ -81,15 +81,7 @@ def generate(args):
 
     return 0
 
-if __name__ == "__main__":
-    parser = ap(description="gpt2ppt commands")
-    parser.add_argument("input_file", help=".txt, format:[question],[topic]")
-    parser.add_argument("-o", "--output_file", help="output destination path (folder)")
-    args = parser.parse_args()
-    error_code = generate(args)
-    if error_code != 0:
-        print("exit...")
-        exit(error_code)
+
     
 
     
