@@ -6,9 +6,8 @@ Auto generating pptx from gpt3+
 2. [OpenAI key](https://platform.openai.com/account/api-keys)
 
 ## Install
-1. Make sure you have Chrome browser installed.
-2. Install Selenium: `pip3 install -r requirements.txt`
-3. Modify extension.py and enter correct api_key
+1. Install Selenium: `pip3 install -r requirements.txt`
+2. Modify extension.py and enter correct api_key
 
 ## Generator
 ### Usage
