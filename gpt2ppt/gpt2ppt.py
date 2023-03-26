@@ -3,7 +3,6 @@ import openai
 import requests 
 import json
 import gpt2ppt.extension as extension
-from argparse import ArgumentParser as ap
 from pptx import Presentation as pt
 
 

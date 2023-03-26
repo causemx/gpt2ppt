@@ -7,7 +7,8 @@ Auto generating pptx from gpt3+
 
 ## Install
 1. Make sure you have Chrome browser installed.
-1. Install Selenium: `pip3 install -r requirements.txt`
+2. Install Selenium: `pip3 install -r requirements.txt`
+3. Modify extension.py and enter correct api_key
 
 ## Generator
 ### Usage
