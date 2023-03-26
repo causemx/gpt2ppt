@@ -28,6 +28,6 @@ python example.py input.txt -o output.pptx
 ```
 
 ### Snapshot:
-<img src="https://imgur.com/v3ewphz">
-<img src="https://imgur.com/NolaGBi">
-<img src="https://imgur.com/AFMtC6V">
+<img width="1024" src="https://i.imgur.com/CGic7f9.png">
+<img width="1024" src="https://i.imgur.com/rcD9bIp.png">
+<img width="1024" src="https://i.imgur.com/DtaKq8s.png">
