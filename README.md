@@ -26,8 +26,3 @@ optional arguments:
 python example.py input.txt
 python example.py input.txt -o output.pptx
 ```
-
-### Snapshot:
-<img width="1024" src="https://i.imgur.com/CGic7f9.png">
-<img width="1024" src="https://i.imgur.com/rcD9bIp.png">
-<img width="1024" src="https://i.imgur.com/DtaKq8s.png">
