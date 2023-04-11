@@ -4,7 +4,7 @@ import requests
 import json
 import gpt2ppt.extension as extension
 from pptx import Presentation as pt
-
+from .parse import parse
 
 openai.api_key = extension.OPENAI_API_KEY
 
@@ -47,6 +47,9 @@ def generate(args):
     print("Hello")
     try:
         with open(input_file) as topo_file:
+            parse(topo_file)
+            
+        """with open(input_file) as topo_file:
             for line in topo_file:
                 print(f"generating slide page: {page_index}")
                 question, topic = line.split(',')
@@ -73,7 +76,7 @@ def generate(args):
                 
                 page_index = page_index + 1
 
-        prs.save(output)       
+        prs.save(output)       """
     except FileNotFoundError as fe:
         print("error:", str(fe))
         return 1
