@@ -1,2 +1,5 @@
 openai
 python-pptx
+discord.py
+python-dotenv
+pyautogui
