@@ -4,6 +4,9 @@ Auto generating pptx from gpt3+
 ## Requirement
 1. Python version > 3.6
 2. [OpenAI key](https://platform.openai.com/account/api-keys)
+3. discord.py
+4. python-dotenv
+5. pyautogui
 
 ## Install
 1. Install Selenium: `pip3 install -r requirements.txt`
@@ -23,6 +26,6 @@ optional arguments:
 
 ### Example
 ```
-python example.py input.txt
-python example.py input.txt -o output.pptx
+python example.py input.json
+python example.py input.json -o output.pptx
 ```
