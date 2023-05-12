@@ -1,3 +1,6 @@
+# Because midjourney not free now, this script not work
+# if you want to use the library please subscribe midjourney
+# from https://docs.midjourney.com/docs/plans
 import time
 import discord
 import extension
