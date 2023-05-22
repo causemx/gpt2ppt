@@ -1,0 +1,28 @@
+{
+	"@title Data Link Layer Design Issues": {
+		"Goals": [
+			"Study the algorithm for achieving reilable, efficient communucation between two adjacent machines",	
+			"Adjacent: two machines are connected by a communication channel that acts like a wire."
+		],
+		"Data Link Layer Design Issues": [
+			"Services Provided to the Network Layer",
+			"Framing",
+			"Error Control",
+			"Flow Control"
+		]		
+	},
+	"@title Functions of the Data Link Layer": [
+		"Provide service interface to the network layer",
+		"Dealing with transmission errors",
+		{
+			"Regulating data flow":"slow receivers not swamped by fast senders"	
+		}
+	],
+	"@title Services Provided to Network Layer": [
+		"Virtual communication",
+		"Actual communication",
+		{
+			"@image":"https://miro.medium.com/v2/resize:fit:1400/format:webp/1*v8vgd0FFgJy_fBUmxbOBgg.jpeg"
+		}
+	]
+}

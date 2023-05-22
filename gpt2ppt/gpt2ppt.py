@@ -1,7 +1,7 @@
 import openai
 import json
 from gpt2ppt import extension
-from gpt2ppt.wrapper import IterWrapper
+from gpt2ppt.utils import IterWrapper
 from pptx import Presentation as pt
 
 openai.api_key = extension.OPENAI_API_KEY

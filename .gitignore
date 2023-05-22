@@ -131,3 +131,6 @@ dmypy.json
 # output
 *.pptx
 *.txt
+
+# diagram
+*.puml
