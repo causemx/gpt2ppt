@@ -134,3 +134,6 @@ dmypy.json
 
 # diagram
 *.puml
+
+# OS specific
+.DS_Store

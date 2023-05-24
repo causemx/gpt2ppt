@@ -15,14 +15,20 @@
 		"Provide service interface to the network layer",
 		"Dealing with transmission errors",
 		{
-			"Regulating data flow":"slow receivers not swamped by fast senders"	
+			"Regulating data flow":"slow receivers not swamped by fast senders",
+			"Some tips": [
+				"tip1",
+				"tip2",
+				"tip3"
+			]
 		}
 	],
 	"@title Services Provided to Network Layer": [
 		"Virtual communication",
 		"Actual communication",
 		{
-			"@image":"https://miro.medium.com/v2/resize:fit:1400/format:webp/1*v8vgd0FFgJy_fBUmxbOBgg.jpeg"
+			"@image1":"https://miro.medium.com/v2/resize:fit:1400/format:webp/1*v8vgd0FFgJy_fBUmxbOBgg.jpeg",
+			"@image2":"https://miro.medium.com/v2/resize:fit:1400/format:webp/1*v8vgd0FFgJy_fBUmxbOBgg.jpeg"
 		}
 	]
 }

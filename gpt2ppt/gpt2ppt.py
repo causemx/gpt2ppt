@@ -63,7 +63,6 @@ def generate(args):
         with open(args.input_file) as topo_file:
             slide = Slide() 
             doc = json.load(topo_file)
-            iter_doc = IterWrapper(doc)
             while iter_doc.hasnext():
                 key = next(iter_doc)
                 if key.startswith("page"):  # ignore _comment token
