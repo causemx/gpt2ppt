@@ -9,15 +9,17 @@ class Parser:
         if isinstance(json_input, dict):
             for k, v in json_input.items():
                 if isinstance(v, str):
-                    self.q.put(("{}:{}".format(k, v), prefix-1))
-                    # print(f"{k} : {v}, {prefix-1}") 
+                    self.q.put(("{}:{}".format(k, v), prefix))
+                    # print(f"{k} : {v}, {prefix} ohyeah") 
                 else:
                     self.q.put((k, prefix))
+                    # print(f"{k}, {prefix}")
                     self.parse(v, prefix=prefix+1)
         elif isinstance(json_input, list):
             for item in json_input:
                 if not isinstance(item, dict):
                     self.q.put((item, prefix))
+                    # print(f"{item}, {prefix}")
                 self.parse(item, prefix+1)
     
     def dump(self):
@@ -38,4 +40,3 @@ if __name__ =="__main__":
     with open("input/input.json") as topo_file:
         p = Parser()
         p.parse(json.load(topo_file))
-        p.dump()

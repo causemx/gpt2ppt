@@ -1,8 +1,8 @@
 import openai
 import json
 from gpt2ppt import extension
-from gpt2ppt.utils import IterWrapper
-from pptx import Presentation as pt
+from .parse import Parser
+from pptx import Presentation
 
 openai.api_key = extension.OPENAI_API_KEY
 
@@ -28,32 +28,38 @@ class Slide:
         return cls._instance
     
     def __init__(self, input=None, output=None) -> None:
-        self.prs = pt()
+        self.prs = Presentation()
     
-    def add(self, title, prompts):
-        slide = self.prs.slides.add_slide(
+    def add_slide(self):
+        self.slide = self.prs.slides.add_slide(
             self.prs.slide_layouts[self.SLD_LAYOUT_TITLE_AND_CONTENT])
-        shapes = slide.shapes
-
-        title_shape = shapes.title
-        body_shape = shapes.placeholders[1]
-        title_shape.text = title
-        text_frame = body_shape.text_frame
-        text_frame.clear()
-        
-        if isinstance(prompts, dict):
-            for topic, prompt in prompts.items():
-                p = text_frame.add_paragraph()
-                res = gen(prompt)
-                p.text = f"{topic}, {res}"
-        else:
-            print('Prompt must contain at least one topic')
-            pass
+        self.shapes = self.slide.shapes
     
-    def add_para(self, tf, content, level=1):
-        p = tf.add_paragraph()
-        p.text = content
-        p.level = level
+    def add_title(self, _title):
+        title_shape = self.shapes.title
+        title_shape.text = _title
+    
+    def add_body(self, _body, level=0):
+        body_shape = self.shapes.placeholders[1]
+        tf = body_shape.text_frame
+        # tf.text = _body
+
+        try:
+            k, v = _body.split(':')
+            if not v.startswith("@prompt"):
+                raise Exception
+            else:
+                _para_up = tf.add_paragraph() 
+                _para_up.text = k
+                _para_up.level = level
+            
+                _para_down = tf.add_paragraph()
+                _para_down.text = v
+                _para_down = level+1
+        except:
+            _para = tf.add_paragraph()
+            _para.text = _body
+            _para.level = level
 
     def save(self):
         self.prs.save('output.pptx')
@@ -61,14 +67,24 @@ class Slide:
 def generate(args):
     try:
         with open(args.input_file) as topo_file:
-            slide = Slide() 
+            # Setup presentation
+            s = Slide()
+            
             doc = json.load(topo_file)
-            while iter_doc.hasnext():
-                key = next(iter_doc)
-                if key.startswith("page"):  # ignore _comment token
-                    slide.add(doc[key]["title"], doc[key]["prompts"])
-            slide.save()
- 
+            p = Parser()
+            p.parse(doc)
+            _queue = p.q
+            while not _queue.empty():
+                subline = _queue.get()
+                # Check title
+                if subline[0].startswith("@title"):
+                    s.add_slide()
+                    s.add_title(subline[0].split("@title",1)[1].lstrip())
+                    # print(subline[0].split("@title",1)[1].lstrip())
+                else:
+                    s.add_body(subline[0], subline[1])
+                    # print(subline[0], subline[1]-1)
+            s.save()
     except FileNotFoundError as fe:
         print("error:", str(fe))
         return 1

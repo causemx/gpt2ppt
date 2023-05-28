@@ -16,10 +16,10 @@
 		"Dealing with transmission errors",
 		{
 			"Regulating data flow":"slow receivers not swamped by fast senders",
-			"Some tips": [
-				"tip1",
-				"tip2",
-				"tip3"
+			"Three phases": [
+				"Connection setup",
+				"data transfer",
+				"Connection teardown"
 			]
 		}
 	],
@@ -27,8 +27,8 @@
 		"Virtual communication",
 		"Actual communication",
 		{
-			"@image1":"https://miro.medium.com/v2/resize:fit:1400/format:webp/1*v8vgd0FFgJy_fBUmxbOBgg.jpeg",
-			"@image2":"https://miro.medium.com/v2/resize:fit:1400/format:webp/1*v8vgd0FFgJy_fBUmxbOBgg.jpeg"
+			"test case 1":"@prompt what does virtual communication actually work?",
+			"test case 2":"@prompt what does Actual communication actually work?"
 		}
 	]
 }
