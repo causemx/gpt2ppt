@@ -27,8 +27,8 @@
 		"Virtual communication",
 		"Actual communication",
 		{
-			"test case 1":"@prompt what does virtual communication actually work?",
-			"test case 2":"@prompt what does Actual communication actually work?"
+			"incoming interface":"@prompt what does virtual communication actually work?",
+			"outgoing interface":"@prompt what does Actual communication actually work?"
 		}
 	]
 }

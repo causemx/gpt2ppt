@@ -46,16 +46,13 @@ class Slide:
 
         try:
             k, v = _body.split(':')
-            if not v.startswith("@prompt"):
-                raise Exception
+            if v.startswith("@prompt"):
+                prompt = v.split("@prompt",1)[1].lstrip()
+                p = tf.add_paragraph() 
+                p.text = "{} - {}".format(k, prompt)
+                p.level = level
             else:
-                _para_up = tf.add_paragraph() 
-                _para_up.text = k
-                _para_up.level = level
-            
-                _para_down = tf.add_paragraph()
-                _para_down.text = v
-                _para_down = level+1
+                raise Exception   
         except:
             _para = tf.add_paragraph()
             _para.text = _body
@@ -80,10 +77,8 @@ def generate(args):
                 if subline[0].startswith("@title"):
                     s.add_slide()
                     s.add_title(subline[0].split("@title",1)[1].lstrip())
-                    # print(subline[0].split("@title",1)[1].lstrip())
                 else:
                     s.add_body(subline[0], subline[1])
-                    # print(subline[0], subline[1]-1)
             s.save()
     except FileNotFoundError as fe:
         print("error:", str(fe))
