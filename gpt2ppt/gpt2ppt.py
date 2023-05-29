@@ -3,6 +3,8 @@ import json
 from gpt2ppt import extension
 from .parse import Parser
 from pptx import Presentation
+from pptx.enum.dml import MSO_THEME_COLOR
+from pptx.util import Pt
 
 openai.api_key = extension.OPENAI_API_KEY
 
@@ -42,21 +44,30 @@ class Slide:
     def add_body(self, _body, level=0):
         body_shape = self.shapes.placeholders[1]
         tf = body_shape.text_frame
+        p = tf.paragraphs[0]
         # tf.text = _body
 
         try:
             k, v = _body.split(':')
             if v.startswith("@prompt"):
                 prompt = v.split("@prompt",1)[1].lstrip()
-                p = tf.add_paragraph() 
+                p = tf.add_paragraph()
                 p.text = "{} - {}".format(k, prompt)
-                p.level = level
+                p.level = level-1
+                
+                font = p.font
+                font.name = 'Calibri'
+                # font.size = Pt(18)
+                font.bold = True
+                font.italic = True  # cause value to be inherited from theme
+                font.color.theme_color = MSO_THEME_COLOR.ACCENT_1
+                
             else:
                 raise Exception   
         except:
-            _para = tf.add_paragraph()
-            _para.text = _body
-            _para.level = level
+            p = tf.add_paragraph()
+            p.text = _body
+            p.level = level-1
 
     def save(self):
         self.prs.save('output.pptx')
