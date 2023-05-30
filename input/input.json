@@ -28,8 +28,8 @@
 		"Virtual communication",
 		"Actual communication",
 		{
-			"incoming interface":"@prompt what does virtual communication actually work?",
-			"outgoing interface":"@prompt what does Actual communication actually work?"
+			"difference between actual and virtual":"@prompt what does virtual communication actually work?",
+			"tool can be used":"@prompt what does Actual communication actually work?"
 		}
 	]
 }

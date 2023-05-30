@@ -59,7 +59,7 @@ class Slide:
                 
                 font = p.font
                 font.name = 'Calibri'
-                # font.size = Pt(18)
+                font.size = Pt(16)
                 font.bold = True
                 font.italic = True  # cause value to be inherited from theme
                 font.color.theme_color = MSO_THEME_COLOR.ACCENT_1
