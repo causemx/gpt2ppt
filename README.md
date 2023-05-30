@@ -5,14 +5,14 @@ Auto generating pptx from gpt3+
 1. Python version > 3.6
 2. openai
 
-## Setup API_KEY
+## Installation
+* Install Selenium: `pip3 install -r requirements.txt`
+
+### Setup the API_KEY
 Run the following command in your terminal, replacing yourkey with your API key.
 ```shell
 echo "export OPENAI_API_KEY='yourkey'" >> ~/.bashrc
 ```
-
-## Install
-1. Install Selenium: `pip3 install -r requirements.txt`
 
 ## Generator
 ### Usage
@@ -28,7 +28,7 @@ optional arguments:
 For inserting slide or content conviently, annotation can be used in .json file.
 
 * `@title` Add new slide and set title for page.
-* `@prompt` insert prompt into content, format: [Topic]:[@prompt] 
+* `@prompt` insert prompt into content, format: ` Topic:@prompt `
 
 
 
