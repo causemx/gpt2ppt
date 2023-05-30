@@ -34,8 +34,15 @@ For inserting slide or content conviently, annotation can be used in .json file.
 * `@prompt` insert prompt into content, format: ` Topic:@prompt `
 
 ## Samples
-Raw json file
+Raw json file:
 
+<img src="https://i.imgur.com/xwVICaT.png" height=500 >
+
+Generated pptx:
+
+<img src="https://i.imgur.com/O183qdy.png" height=500 >
+<img src="https://i.imgur.com/jzdhP0k.png" height=500 >
+<img src="https://i.imgur.com/pfwzLBL.png" height=500 >
 
 
 
