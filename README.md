@@ -1,5 +1,5 @@
 # gpt2ppt
-Auto generating pptx from gpt3+
+Auto generating pptx from json format file(include prompt) using gpt3.5-turbo model.
 
 ## Requirement
 1. Python version > 3.6
