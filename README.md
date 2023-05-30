@@ -3,7 +3,8 @@ Auto generating pptx from gpt3+
 
 ## Requirement
 1. Python version > 3.6
-2. openai
+2. python-pptx
+3. openai
 
 ## Installation
 First install requirment packages: 
