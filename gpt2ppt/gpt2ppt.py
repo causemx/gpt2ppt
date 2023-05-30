@@ -1,3 +1,4 @@
+import os
 import openai
 import json
 from gpt2ppt import extension
@@ -6,7 +7,7 @@ from pptx import Presentation
 from pptx.enum.dml import MSO_THEME_COLOR
 from pptx.util import Pt
 
-openai.api_key = extension.OPENAI_API_KEY
+openai.api_key = os.getenv("OPENAI_API_KEY")
 
 MODEL_ENGINE = "gpt-3.5-turbo"
 
@@ -52,6 +53,7 @@ class Slide:
             if v.startswith("@prompt"):
                 prompt = v.split("@prompt",1)[1].lstrip()
                 p = tf.add_paragraph()
+                # p.text = "{} - {}".format(k, gen(prompt))
                 p.text = "{} - {}".format(k, prompt)
                 p.level = level-1
                 
@@ -69,8 +71,8 @@ class Slide:
             p.text = _body
             p.level = level-1
 
-    def save(self):
-        self.prs.save('output.pptx')
+    def save(self, output_file):
+        self.prs.save(output_file)
 
 def generate(args):
     try:
@@ -90,15 +92,16 @@ def generate(args):
                     s.add_title(subline[0].split("@title",1)[1].lstrip())
                 else:
                     s.add_body(subline[0], subline[1])
-            s.save()
+            s.save(args.outputFile)
     except FileNotFoundError as fe:
         print("error:", str(fe))
         return 1
     return 0
 
-def gen(prompts):
+def gen(prompts, max=30):
     for prompt in prompts:
         response = openai.ChatCompletion.create(
             model=MODEL_ENGINE, 
-            messages=[{"role": "user", "content": prompt}])   
+            messages=[{"role": "user", 
+                       "content": "{} in {} words".format(prompt, max)}])   
     return response['choices'][0]['message']['content']

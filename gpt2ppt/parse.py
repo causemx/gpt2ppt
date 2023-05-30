@@ -13,13 +13,11 @@ class Parser:
                     # print(f"{k} : {v}, {prefix} ohyeah") 
                 else:
                     self.q.put((k, prefix))
-                    # print(f"{k}, {prefix}")
                     self.parse(v, prefix=prefix+1)
         elif isinstance(json_input, list):
             for item in json_input:
                 if not isinstance(item, dict):
                     self.q.put((item, prefix))
-                    # print(f"{item}, {prefix}")
                 self.parse(item, prefix+1)
     
     def dump(self):
