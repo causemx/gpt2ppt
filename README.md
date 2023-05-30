@@ -6,7 +6,10 @@ Auto generating pptx from gpt3+
 2. openai
 
 ## Installation
-* Install Selenium: `pip3 install -r requirements.txt`
+First install requirment packages: 
+```python
+pip3 install -r requirements.txt
+```
 
 ### Setup the API_KEY
 Run the following command in your terminal, replacing yourkey with your API key.
