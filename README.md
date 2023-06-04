@@ -17,6 +17,10 @@ Run the following command in your terminal, replacing yourkey with your API key.
 ```shell
 echo "export OPENAI_API_KEY='yourkey'" >> ~/.bashrc
 ```
+### Running the app
+```python
+python app.py
+```
 
 ## Generator
 ### Usage
